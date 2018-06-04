@@ -13,11 +13,11 @@ include(ExternalProject)
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 
 ExternalProject_Add(orb_slam_2_src
-  GIT_REPOSITORY git@github.com:raulmur/ORB_SLAM2.git
+  GIT_REPOSITORY https://github.com/lfrschkn/ORB_SLAM2.git #https://github.com/raulmur/ORB_SLAM2.git
   UPDATE_COMMAND ""
   CONFIGURE_COMMAND
       # Configuring DBoW2
-      mkdir -p ../orb_slam_2_src/Thirdparty/DBoW2/build && 
+      mkdir -p ../orb_slam_2_src/Thirdparty/DBoW2/build &&
       cd ../orb_slam_2_src/Thirdparty/DBoW2/build &&
       cmake .. -DCMAKE_BUILD_TYPE=Release &&
       # Configuring g2o
@@ -31,7 +31,7 @@ ExternalProject_Add(orb_slam_2_src
       mkdir -p ../build &&
       cd ../build &&
       cmake .. -DCMAKE_BUILD_TYPE=Release
-  BUILD_COMMAND 
+  BUILD_COMMAND
       # Building DBoW2
       cd ../orb_slam_2_src/Thirdparty/DBoW2/build/ &&
       make -j &&
